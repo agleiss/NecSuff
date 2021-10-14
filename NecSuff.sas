@@ -12,8 +12,8 @@
 * Statistics in Medicine 2019, 38:4733–4748
 *
 * Author:  Andreas Gleiss
-* Version: 1.3 (bugs fixed for case of inpred)
-* Date:    26 Aug 2021
+* Version: 1.4 (bug fixed for refcat=last)
+* Date:    5 Oct 2021
 *
 * Macro parameters:
 * =================
@@ -26,7 +26,8 @@
 * inpred	dataset containing predictions
 *			(data and x can be omitted)
 * inpredvar	name of variable in inpred dataset containing 
-*			predictions
+*			predictions 
+*			(caution: y and inpredvar must be compatible)
 * odssel	control output from proc logistic 
 *			(default: ResponseProfile)
 * print 	=1 to print results (default), =0 (e.g., for simulations)
@@ -59,6 +60,10 @@
 		output out=_my1 mean=p_bar max=_dummy;
 		freq freq;
 		run;
+	data _my1;
+		set _my1;
+		%if &refcat=last %then p_bar=1-p_bar;;
+		run;
 	%end;
 %else %do;
 	data _est1;
@@ -70,11 +75,12 @@
 		_dummy=1; beta0=.; beta1=.; output;
 		run;
 	proc means data=_est1 noprint;
-		var &y; *&inpredvar; *?!;
+		var &y; *&inpredvar;
 		output out=_my1 mean=p_bar;
 		run;
 	data _my1;
 		set _my1;
+		%if &refcat=last %then p_bar=1-p_bar;;
 		_dummy=1;
 		run;
 	%end;
