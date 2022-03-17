@@ -18,8 +18,8 @@
 *
 *
 * Author:  Andreas Gleiss
-* Version: 1.0
-* Date:    16 Feb 2022
+* Version: 1.1 (bugs fixed)
+* Date:    17 Mar 2022
 *
 * Macro parameters:
 * =================
@@ -113,7 +113,7 @@ run;
 
 PROC PHREG DATA=RR OUTEST=V noprint;               ***** coefficients ;
 MODEL &TIME*STAT(0)= %DO J=1 %TO &VZ; &&V&J %END;  
-	/ eventcode=1 &options; 
+	/ eventcode=1; 
 	BASELINE covariates=_covs OUT=S cif=cif0;
 	strata &strat;
 run;
@@ -357,12 +357,12 @@ run;
 							  if fg<cif[j] then do; /* >>> NECESSARY <<< */
 							    q_kl=q_kl+q;
 								if cif[j]<1 then 
-									term_n=term_n + q*((fg-cif[j])/cif[j])**2;
+									term_n=term_n + q*((cif[j]-fg)/cif[j])**2;
 								end;
 							  if fg>cif[j] then do; /* >>> SUFFICIENT <<< */
 							    q_gr=q_gr+q;
 								if cif[j]>0 then 
-									term_s=term_s + q*((cif[j]-fg)/(1-cif[j]))**2;
+									term_s=term_s + q*((fg-cif[j])/(1-cif[j]))**2;
 								end;
 
 							  q_sum=q_sum+q; 

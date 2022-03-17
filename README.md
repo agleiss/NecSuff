@@ -1,8 +1,12 @@
 # Degrees of necessity and of sufficiency
 
-We suggest measures to quantify the degrees of necessity and of sufficiency (DN and DS) of prognostic factors for dichotomous, survival, ordinal and nominal outcomes. A cause, represented by certain values of prognostic factors, is considered necessary for an event if, without the cause, the event cannot develop. It is considered sufficient for an event if the event is unavoidable in the presence of the cause. Necessity and sufficiency can be seen as the two faces of causation, and this symmetry and equal relevance are reflected by the suggested measures. The measures provide an approximate, in some cases an exact, multiplicative decomposition of explained variation as defined by Schemper for dichotomous outcomes. The SAS macro 'NecSuff' and the R function 'NecSuff' provided below implement the marginal DN and DS measures for the case of a dichotomous outcome. The SAS macro 'NecSuff_Surv' implements marginal and partial DN and DS for a survival outcome. The SAS macros 'NecSuff_Ord' and 'NecSuff_Nom0' calculate marginal DN and DS for an ordinal and a nominal outcome (with reference category), respectively.
-Measures for competing risks survival data are provided by the SAS macro 'NecSuff_CR'
-
+We suggest measures to quantify the degrees of necessity and of sufficiency (DN and DS) of prognostic factors for dichotomous, survival, ordinal and nominal outcomes. A cause, represented by certain values of prognostic factors, is considered necessary for an event if, without the cause, the event cannot develop. It is considered sufficient for an event if the event is unavoidable in the presence of the cause. Necessity and sufficiency can be seen as the two faces of causation, and this symmetry and equal relevance are reflected by the suggested measures. The measures provide an approximate, in some cases an exact, multiplicative decomposition of explained variation as defined by Schemper for dichotomous outcomes. 
+SAS macros and R functions are provided for the following types of outcomes:
+- NecSuff for dichotomous outcomes
+- NecSuff_Surv for survival outcomes
+- NecSuff_Ord for ordinal outcomes
+- NecSuff_Nom0 for nominal outcomes with reference category
+- NecSuff_CR for survival outcomes with competing risks
  
 
 ## References:
