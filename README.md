@@ -19,5 +19,6 @@ Gleiss, A, Henderson, R, Schemper, M (2021):
 "Degrees of necessity and of sufficiency: further results and extensions, with an application to covid-19 mortality in Austria", Statistics in Medicine. 2021;40:3352-3366.
 doi:10.1002/sim.8961 
 
-Gleiss, A, Gnant, M, Schemper, M:
-"Explained variation and degrees of necessity and of sufficiency for competing risks survival data" (submitted)
+Gleiss, A, Gnant, M, Schemper, M (2024): 
+"Explained variation and degrees of necessity and of sufficiency for competing risks survival data", Biometrical Journal. 2024;66:2300140. 
+doi:10.1002/bimj.202300140
