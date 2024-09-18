@@ -12,13 +12,19 @@ SAS macros and R functions are provided for the following types of outcomes:
 ## References:
 
 Gleiss, A, Schemper, M (2019):
-"Quantifying degrees of necessity and of sufficiency in cause-effect relationships with dichotomous and survival outcomes.", Statistics in Medicine. 2019;38:4733–4748.
+"Quantifying degrees of necessity and of sufficiency in cause-effect relationships with dichotomous and survival outcomes.", Statistics in Medicine. 2019;38:4733â€“4748.
 doi:10.1002/sim.8331
 
 Gleiss, A, Henderson, R, Schemper, M (2021):
 "Degrees of necessity and of sufficiency: further results and extensions, with an application to covid-19 mortality in Austria", Statistics in Medicine. 2021;40:3352-3366.
 doi:10.1002/sim.8961 
 
+<<<<<<< HEAD
 Gleiss, A, Gnant, M, Schemper, M (2024): 
 "Explained variation and degrees of necessity and of sufficiency for competing risks survival data", Biometrical Journal. 2024;66:2300140. 
 doi:10.1002/bimj.202300140
+=======
+Gleiss, A, Gnant, M, Schemper, M (2024):
+"Explained variation and degrees of necessity and of sufficiency for competing risks survival data", Biometrical Journal. 2024;66:2300140.
+doi:10.1002/bimj.202300140
+>>>>>>> f48115ef55cdc61eb090db26f72ef8c61bf4f973
