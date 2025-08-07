@@ -27,6 +27,7 @@ Gleiss, A, Gnant, M, Schemper, M (2024):
 "Explained variation and degrees of necessity and of sufficiency for competing risks survival data", Biometrical Journal. 2024;66:2300140.
 doi:10.1002/bimj.202300140
 
-Gleiss, A (2024):
-"Visualizing a marker’s degrees of necessity and of sufficiency in the predictiveness curve", submitted
+Gleiss, A (2025):
+"Visualizing a marker’s degrees of necessity and of sufficiency in the predictiveness curve", BMC Medical Research Methodology. 2025;25:107.
+doi:10.1186/s12874-025-02544-y
 
