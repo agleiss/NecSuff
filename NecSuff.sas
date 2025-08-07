@@ -12,7 +12,7 @@
 * Statistics in Medicine 2019, 38:4733–4748
 *
 * Author:  Andreas Gleiss
-* Version: 1.4 (bug fixed for refcat=last)
+* Version: 1.5 (macro parameter by added)
 * Date:    5 Oct 2021
 *
 * Macro parameters:
@@ -31,17 +31,25 @@
 * odssel	control output from proc logistic 
 *			(default: ResponseProfile)
 * print 	=1 to print results (default), =0 (e.g., for simulations)
+* by		optional variable name for by processing
 *
 *******************************************************************;
 
 %macro necsuff(data, y, x, freq=, refcat=first, inpred=, inpredvar=, 
-				odssel=ResponseProfile, print=1);
+				odssel=ResponseProfile, print=1, by=);
+
+%if &by= %then %let by = _all;;
+
 %if &inpred= %then %do;
 	data _work;
 		set &data;
 		if missing(&x) or missing(&y) then delete;
 		%if &freq= %then freq=1;
 				   %else freq=&freq;;
+		_all=1;
+		run;
+	proc sort data=_work;
+		by &by;
 		run;
 	ods select &odssel;
 	proc logistic data=_work outest=_betas;
@@ -49,13 +57,15 @@
 		model &y=&x;
 		output out=_est1 pred=p_i_dach;
 		freq freq;
+		by &by;
 		run;
 	data _betas;
 		set _betas(rename=(intercept=beta0 &x=beta1));
 		_dummy=1;
 		keep _dummy beta0 beta1;
 		run;
-	proc means data=_work noprint;
+	proc means data=_work noprint nway;
+		class &by;
 		var &y;
 		output out=_my1 mean=p_bar max=_dummy;
 		freq freq;
@@ -70,11 +80,13 @@
 		set &inpred(where=(not missing(&inpredvar) and not missing(&y)));
 		p_i_dach=&inpredvar;
 		freq=1;
+		_all=1;
 		run;
 	data _betas;
 		_dummy=1; beta0=.; beta1=.; output;
 		run;
-	proc means data=_est1 noprint;
+	proc means data=_est1 noprint nway;
+		class &by;
 		var &y; *&inpredvar;
 		output out=_my1 mean=p_bar;
 		run;
@@ -85,19 +97,27 @@
 		run;
 	%end;
 proc sort data=_est1;
-	by descending p_i_dach;
+	by &by descending p_i_dach;
 	run;
 data _est1;
 	set _est1;
 	_dummy=1;
 	_row=_n_;
 	run;
-data _est1_;
+data _est1b;
 	merge _est1 
-		  _my1(keep=p_bar _dummy _freq_ rename=(_freq_=n))
 		  _betas;
 	by _dummy;
-	retain dn1_sum ds1_sum dn2_sum ds2_sum n_smaller n_larger (0 0 0 0 0 0);
+	run;
+data _est1_;
+	merge _est1b 
+		  _my1(keep=&by p_bar _dummy _freq_ rename=(_freq_=n));
+	by &by;
+	retain dn1_sum ds1_sum dn2_sum ds2_sum n_smaller n_larger;
+
+	if first.&by then do;
+		dn1_sum=0; ds1_sum=0; dn2_sum=0; ds2_sum=0; n_smaller=0; n_larger=0;
+		end;
 
 	smaller=(p_i_dach<p_bar);
 	larger=(p_i_dach>p_bar);
@@ -116,9 +136,8 @@ data _est1_;
 
 data _necsuff_;
 	set _est1_;
-	by _dummy _row;
-	*where _row=n;
-	if not last._dummy then delete;
+	by &by _row;
+	if not last.&by then delete;
 	if n_smaller~=0 then do;
 		dn_1_=dn1_sum/n_smaller; 
 		dn_2=dn2_sum/n_smaller; 
@@ -143,14 +162,14 @@ data _necsuff_;
 	alpha=n_larger/n;
 	or=exp(beta1);
 	progn_fact="&x";
-	keep progn_fact p_bar alpha or ev_indir dn_1 ds_1 dn_2 ds_2;
+	keep &by progn_fact p_bar alpha or ev_indir dn_1 ds_1 dn_2 ds_2;
 	run;
 ods select all;
 %if &print=1 %then %do;
 	title "Degrees of necessity and sufficiency";
 	title2 "Outcome = &y";
 	proc print data=_necsuff_ noobs label;
-		var progn_fact p_bar alpha or ev_indir dn_1 ds_1 dn_2 ds_2;
+		var &by progn_fact p_bar alpha or ev_indir dn_1 ds_1 dn_2 ds_2;
 		format or p_bar alpha ev_indir dn: ds: f5.3;
 		label 	progn_fact="Prognostic factor"
 				or="OR" ev_indir="EV" p_bar="est.P(D)"
