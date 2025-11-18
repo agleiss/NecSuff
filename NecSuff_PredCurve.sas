@@ -8,7 +8,7 @@
 * To be applied directly after call of %necsuff();
 * Uses datasets _est1, _est1_ and _necsuff_ produced by %necsuff()
 *
-* Gleiss, A. Visualizing a markerâ€™s degrees of necessity and of 
+* Gleiss, A. Visualizing a marker’s degrees of necessity and of 
 * sufficiency in the predictiveness curve, submitted (2024)
 *
 * Author:  Andreas Gleiss
