@@ -9,7 +9,8 @@
 * Uses datasets _est1, _est1_ and _necsuff_ produced by %necsuff()
 *
 * Gleiss, A. Visualizing a marker’s degrees of necessity and of 
-* sufficiency in the predictiveness curve, submitted (2024)
+* sufficiency in the predictiveness curve, 
+* BMC Medical Research Methodology (2025) 25:107.
 *
 * Author:  Andreas Gleiss
 * Version: 1.0
