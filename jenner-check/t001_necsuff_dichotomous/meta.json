@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_necsuff_dichotomous",
+  "source_file": "NecSuff.sas",
+  "source_blob_sha": "9abbaa33c1fe23d17a5972501d4ade85694ed0ba",
+  "source_commit": "8aae993411c2d0f8f4c328a57350215c98e1e6b2",
+  "notes": "%necsuff macro (dichotomous outcome) run verbatim against the author's own documented Swedish lung-cancer cohort example (Nilsson et al, 2001), expressed as a 4-row frequency table via the macro's freq= parameter to preserve the full 12664-obs cohort exactly. PROC LOGISTIC converges (OR 0.108); macro prints the DN/DS necessity/sufficiency table. No path or logic edits to the macro."
+}

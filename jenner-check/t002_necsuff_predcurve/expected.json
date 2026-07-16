@@ -1,0 +1,18 @@
+{
+  "_captured_at": "2026-07-16T05:33:35.549035+00:00",
+  "_captured_run_id": "r_12a7a990a4114c648272dc6c6ed7226e",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: PROC SGPLOT output written to: ./ods_output/sgplot.svg",
+    "NOTE: Wrote _necsuff_ (1 rows, 10 columns)."
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}
