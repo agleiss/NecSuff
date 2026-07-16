@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_necsuff_predcurve",
+  "source_file": "NecSuff_PredCurve.sas",
+  "source_blob_sha": "740d5a8d0383329cd2853e8eb01972750931a7c8",
+  "source_commit": "8aae993411c2d0f8f4c328a57350215c98e1e6b2",
+  "notes": "%necsuff (dichotomous) chained into %necsuff_predcurve, both run verbatim (base macro inlined in place of the author's %include path). Exercised on a fixed 22-row continuous-marker cohort so the predictiveness curve has spread. PROC SGPLOT draws the curve with the DN/DS areas shaded (sgplot.svg). The optional total-gain measures table (showmeas=1) is left off in this bundle; the curve itself is the macro's primary output. base macro blob: 9abbaa33c1fe23d17a5972501d4ade85694ed0ba"
+}

@@ -1,0 +1,56 @@
+
+-------------------------------------------------- BY Group: _all=1 --------------------------------------------------
+
+                                     
+---------------------------  --------
+Number of Observations Read     12664
+Number of Observations Used     12664
+
+            Response Profile            
+      Probability modeled is y='0'      
+
+Ordered Value  y         Total Frequency
+-------------  --------  ---------------
+            1  0                   12451
+            2  1                     213
+
+  Class Level Information   
+
+Class       Levels  Values  
+--------  --------  --------
+y                2  0 1     
+
+                                             
+---------------------------------------------
+Convergence criterion (GCONV=1E-8) satisfied.
+
+The LOGISTIC Procedure
+Response Variable: y
+
+Criterion     Value
+---------  --------
+AIC        1959.314
+-2 Log L   1955.314
+SC         1974.207
+
+            Analysis of Maximum Likelihood Estimates            
+
+Parameter  Estimate  Standard Error  Wald Chi-Square  Pr > ChiSq
+---------  --------  --------------  ---------------  ----------
+Intercept    5.4186          0.1670        1052.3298      <.0001
+x           -2.2212          0.1838         146.0436      <.0001
+
+                     Odds Ratio Estimates                     
+
+Effect    Point Estimate  95% Wald CL Lower  95% Wald CL Upper
+--------  --------------  -----------------  -----------------
+x                  0.108              0.076              0.156
+
+                                          Degrees of necessity and sufficiency
+                                                      Outcome = y
+
+
+_all  Prognostic factor  est.P(D)  alpha     OR      EV  DN1           DS1  DN2           DS2
+----  -----------------  --------  -----  -----  ------  ---  ------------  ---  ------------
+   1  x                     0.017  1.000  0.108  56.489    0  0.9830392414    0  0.9828927238
+
